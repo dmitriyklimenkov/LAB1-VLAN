@@ -1,14 +1,14 @@
 # Лабораторная работа: конфигурация VLAN и настройка Inter-VLAN Routing методом Router-on-a-Stick
-##Задание:
+#Задание:
 - Базовые настройки сетевых устройств
 - Настроить VLAN на коммутаторах
 - Настроить транковые каналы
 - Настроить Inter-VLAN Routing
 
- ##Решение:
+ #Решение:
  
  #Схема лабораторного стенда:
- https://github.com/dmitriyklimenkov/LAB1-VLAN/blob/main/%D0%A1%D1%85%D0%B5%D0%BC%D0%B0%20%D0%BB%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%BE%D0%B3%D0%BE%20%D1%81%D1%82%D0%B5%D0%BD%D0%B4%D0%B0%20VLAN.png
+![](https://github.com/dmitriyklimenkov/LAB1-VLAN/blob/main/%D0%A1%D1%85%D0%B5%D0%BC%D0%B0%20%D0%BB%D0%B0%D0%B1%D0%BE%D1%80%D0%B0%D1%82%D0%BE%D1%80%D0%BD%D0%BE%D0%B3%D0%BE%20%D1%81%D1%82%D0%B5%D0%BD%D0%B4%D0%B0%20VLAN.png)
  
 #Таблица адресации:
 | Устройство | Интерфейс  |   IP адрес   | Маска подсети | Шлюз по умолчанию |
