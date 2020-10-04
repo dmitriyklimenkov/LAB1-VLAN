@@ -27,7 +27,7 @@
 | 3      | Management        | S1: VLAN3 S2: VLAN3 S1: Fa0/6 |
 | 4      | Operations        | S2: Fa0/18 |
 | 7      | ParkingLot        | S1: F0/2-4, F0/7-24, G0/1-2 S2: F0/2-17, F0/19-24, G0/1-2 |
-| 8      | Native            |   |
+| 8      | Native            |               |
 
 
  #Конфигурация S1:
