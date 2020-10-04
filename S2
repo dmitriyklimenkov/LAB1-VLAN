@@ -1,0 +1,63 @@
+
+en
+conf t
+ hostname S2
+ no ip domain lookup
+ enable password class
+ line console 0
+ password cisco
+ login
+ exit
+ line vty 0 15
+ password cisco
+ login
+ exit
+ service password-encryption 
+ banner motd $ This is secure system. Authorized access only. $
+ exit 
+
+ S2#clock set 21:05:00 29 september 2020
+ vlan 3
+ name Management
+ exit
+ int vlan 3
+ 
+
+ ip address 192.168.3.12 255.255.255.0
+ no shut
+ des Management
+ exit
+ ip default-gateway 192.168.3.1
+ vlan 7
+ name ParkingLot
+ exit
+ int range fa0/2-17
+ des ParkingLot
+ shut
+ switchport mode access
+ switchport access vlan 7
+ exit
+ int range fa0/19-24
+ switchport access vlan 7
+ switchport mode access
+ des ParkingLot
+ shut
+ exit
+ int range gi0/1-2
+ des ParkingLot
+ switchport mode access
+ switchport access vlan 7
+ shut
+ vlan 4
+ name Operations
+ exit
+ int fa0/18
+ switchport mode access
+ switchport access vlan 4
+
+ int fa0/1
+ des TO_S1
+ switchport mode trunk
+ switchport trunk native vlan 8
+ switchport trunk allowed vlan 3,4
+ copy run start
