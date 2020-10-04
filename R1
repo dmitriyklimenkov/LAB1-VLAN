@@ -1,0 +1,22 @@
+en
+conf t
+ hostname R1
+ no ip domain lookup
+ enable password class
+ line console 0
+ password cisco
+ login
+ exit
+
+ line vty 0 15
+ password cisco
+ login
+ exit
+ service password-encryption
+ exit
+ copy run start
+ clock set 20:45:00 29 september 2020
+ int gi0/0/1
+ no shut
+ exit
+ banner motd $ This is a secure system. Authorized access only $
