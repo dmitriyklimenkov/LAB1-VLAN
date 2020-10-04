@@ -31,7 +31,7 @@
 
 
  # Конфигурация S1:
- ```en
+ `en
 conf t
  hostname S1
  no ip domain lookup
@@ -95,11 +95,11 @@ conf t
  switchport mode trunk
  switchport trunk allowed vlan 3,4
  switchport trunk native vlan 8
- copy run start``` 
+ copy run start` 
  
  # Конфигурация S2:
  
-```en
+`en
 conf t
  hostname S2
  no ip domain lookup
@@ -160,10 +160,10 @@ conf t
  switchport mode trunk
  switchport trunk native vlan 8
  switchport trunk allowed vlan 3,4
- copy run start```
+ copy run start`
  
 # Конфигурация R1:
-```en
+`en
 conf t
  hostname R1
  no ip domain lookup
@@ -194,4 +194,4 @@ conf t
  des Operations
  encapsulation dot1q 4
  ip address 192.168.4.1 255.255.255.0
- copy run start```
+ copy run start`
