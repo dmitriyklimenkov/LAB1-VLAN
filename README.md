@@ -32,7 +32,7 @@
 
 # 1. Конфигурация S1.
 - основные настройки коммутатора S1:
-```conf t
+``` conf t
  hostname S1
  no ip domain lookup
  enable secret class
@@ -49,7 +49,7 @@
  exit
  ```
 - настройка транковых портов Fa0/1 и Fa0/5:
-```int fa0/1
+``` int fa0/1
  des TO_S2
  switchport mode trunk
  switchport trunk native vlan 8
@@ -71,7 +71,7 @@
 
 # 3. Конфигурация R1.
 - основные настройки маршрутизатора R1:
-```conf t
+``` conf t
  hostname R1
  no ip domain lookup
  enable secret class
@@ -94,7 +94,7 @@
  banner motd $ This is a secure system. Authorized access only $
  ```
 - настройка и активация сабинтерфейсов для каждого VLAN:
- ```int gi0/0/1.3
+ ``` int gi0/0/1.3
  des Management
  encapsulation dot1q 3
  ip address 192.168.3.1 255.255.255.0
