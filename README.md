@@ -31,7 +31,37 @@
 
 
 # 1. Конфигурация S1.
-Сделаем основные настройки коммутатора S1, затем настроим порты Fa0/1 и Fa0/5 как транковые и Fa0/6 как порт доступа. Файл конфигурации [здесь](https://github.com/dmitriyklimenkov/LAB1-VLAN/blob/main/S1).
+- основные настройки коммутатора S1:
+conf t
+ hostname S1
+ no ip domain lookup
+ enable secret class
+ line console 0
+ password cisco
+ login
+ exit
+ line vty 0 15
+ password cisco
+ login
+ exit
+ service password-encryption 
+ banner motd $ This is a secure system. Authorized access only. $
+ exit
+- настройка транковых портов Fa0/1 и Fa0/5:
+int fa0/1
+ des TO_S2
+ switchport mode trunk
+ switchport trunk native vlan 8
+ switchport trunk allowed vlan 3,4
+ int fa0/5
+ switchport mode trunk
+ switchport trunk allowed vlan 3,4
+ switchport trunk native vlan 8
+- настройка порта доступа Fa0/6:
+int fa0/6
+ switchport mode access
+ switchport access vlan 3
+Файл конфигурации [здесь](https://github.com/dmitriyklimenkov/LAB1-VLAN/blob/main/S1).
  
 # 2. Конфигурация S2.
 Сделаем основные настройки коммутатора S2, затем настроим порт Fa0/1 как транковый и Fa0/18 как порт доступа. Файл конфигурации [здесь](https://github.com/dmitriyklimenkov/LAB1-VLAN/blob/main/S2).
@@ -39,4 +69,8 @@
 # 3. Конфигурация R1.
 Сделаем основные настройки маршрутизатора R1, затем настроим и активируем сабинтерфейсы для каждого VLAN. Файл конфигурации [здесь](https://github.com/dmitriyklimenkov/LAB1-VLAN/blob/main/R1).
 
-После настройки проверим связность от каждого хоста до шлюза по умолчанию и между двумя хостами. Видно, что пинги проходят, из этого делаем вывод, что все настроено верно.
+# 4. Проверка связности.
+С PC-B отправим пинги на шлюз по умолчанию и на PC-A
+![](https://github.com/dmitriyklimenkov/LAB1-VLAN/blob/main/%D0%A1%D0%B2%D1%8F%D0%B7%D0%BD%D0%BE%D1%81%D1%82%D1%8C1.png)
+![](https://github.com/dmitriyklimenkov/LAB1-VLAN/blob/main/%D0%A1%D0%B2%D1%8F%D0%B7%D0%BD%D0%BE%D1%81%D1%82%D1%8C2.png)
+Видно, что пинги проходят, из этого делаем вывод, что все настроено верно.
