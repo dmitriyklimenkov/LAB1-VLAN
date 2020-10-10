@@ -70,7 +70,40 @@
 Сделаем основные настройки коммутатора S2, затем настроим порт Fa0/1 как транковый и Fa0/18 как порт доступа. Файл конфигурации [здесь](https://github.com/dmitriyklimenkov/LAB1-VLAN/blob/main/S2).
 
 # 3. Конфигурация R1.
-Сделаем основные настройки маршрутизатора R1, затем настроим и активируем сабинтерфейсы для каждого VLAN. Файл конфигурации [здесь](https://github.com/dmitriyklimenkov/LAB1-VLAN/blob/main/R1).
+- основные настройки маршрутизатора R1:
+```conf t
+ hostname R1
+ no ip domain lookup
+ enable secret class
+ line console 0
+ password cisco
+ login
+ exit
+
+ line vty 0 15
+ password cisco
+ login
+ exit
+ service password-encryption
+ exit
+ copy run start
+ clock set 20:45:00 29 september 2020
+ int gi0/0/1
+ no shut
+ exit
+ banner motd $ This is a secure system. Authorized access only $
+ ```
+- настройка и активация сабинтерфейсов для каждого VLAN:
+ ```int gi0/0/1.3
+ des Management
+ encapsulation dot1q 3
+ ip address 192.168.3.1 255.255.255.0
+ int gi0/0/1.4
+ des Operations
+ encapsulation dot1q 4
+ ip address 192.168.4.1 255.255.255.0
+ ```
+Файл конфигурации [здесь](https://github.com/dmitriyklimenkov/LAB1-VLAN/blob/main/R1).
 
 # 4. Проверка связности.
 С PC-B отправим пинги на шлюз по умолчанию и на PC-A
