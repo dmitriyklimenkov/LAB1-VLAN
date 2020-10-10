@@ -32,7 +32,7 @@
 
 # 1. Конфигурация S1.
 - основные настройки коммутатора S1:
-`conf t
+```conf t
  hostname S1
  no ip domain lookup
  enable secret class
@@ -46,9 +46,10 @@
  exit
  service password-encryption 
  banner motd $ This is a secure system. Authorized access only. $
- exit`
+ exit
+ ```
 - настройка транковых портов Fa0/1 и Fa0/5:
-`int fa0/1
+```int fa0/1
  des TO_S2
  switchport mode trunk
  switchport trunk native vlan 8
@@ -56,11 +57,13 @@
  int fa0/5
  switchport mode trunk
  switchport trunk allowed vlan 3,4
- switchport trunk native vlan 8`
+ switchport trunk native vlan 8
+ ```
 - настройка порта доступа Fa0/6:
-`int fa0/6
+```int fa0/6
  switchport mode access
- switchport access vlan 3`
+ switchport access vlan 3
+ ```
 Файл конфигурации [здесь](https://github.com/dmitriyklimenkov/LAB1-VLAN/blob/main/S1).
  
 # 2. Конфигурация S2.
